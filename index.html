@@ -1,12 +1,210 @@
-<section id="about">
-    <h2>The Person Behind the Portfolio</h2>
-    <p>
-        They say a picture is worth a thousand words—and while <strong><img src="Catlol.jpg"></strong> captures my approachable side, my professional career is built on a foundation of high-energy execution and bold results. 
-    </p>
-    <p style="margin-top: 15px;">
-        I thrive at the intersection of <strong>strategy and creativity</strong>. Whether I'm diving into complex workflows or exploring my personal interests, I bring the same "Crimson" energy to everything I do: intense, focused, and impossible to ignore.
-    </p>
-    <div style="margin-top: 20px; padding: 15px; border-left: 4px solid var(--primary-red); background: #fff5f5; font-style: italic;">
-        "I don't just complete projects; I ignite them. My goal is to blend technical precision with a human touch that makes collaboration seamless."
+Using your resume  and the Crimson Professional Master Prompt, I have built a decked-out, responsive index.html.  This version highlights your pursuit of the CPA , your diverse professional background , and your impressive personal feats—like marathon running and cello.  Your New index.htmlHTML<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antony Hajsok | Accounting Professional</title>
+    <style>
+        :root {
+            --primary-red: #d32f2f; /* Crimson Professional */
+            --dark-red: #9a0007;
+            --light-bg: #fdfdfd;
+            --text-main: #2d2d2d;
+            --text-secondary: #555555;
+            --white: #ffffff;
+            --soft-red: #fff5f5;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--light-bg);
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 10px solid var(--dark-red);
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--white);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        h1 { font-size: 3rem; margin-bottom: 10px; letter-spacing: -1px; }
+        .tagline { font-size: 1.3rem; font-weight: 300; opacity: 0.9; }
+
+        /* --- LAYOUT --- */
+        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
+        section { margin-bottom: 80px; }
+        h2 {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+            border-left: 6px solid var(--primary-red);
+            padding-left: 20px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- ABOUT / EDUCATION --- */
+        .highlight-box {
+            background: var(--soft-red);
+            padding: 30px;
+            border-radius: 12px;
+            border-right: 4px solid var(--primary-red);
+        }
+
+        /* --- EXPERIENCE --- */
+        .timeline { position: relative; padding-left: 30px; }
+        .job { margin-bottom: 40px; position: relative; }
+        .job::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-red);
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 2px var(--primary-red);
+        }
+        .job-title { font-weight: 800; font-size: 1.3rem; color: var(--text-main); }
+        .job-company { color: var(--primary-red); font-weight: 600; display: block; }
+        .job-date { font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; }
+
+        /* --- SKILLS --- */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-badge {
+            background: var(--text-main);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        /* --- INTERESTS GRID --- */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        .interest-card {
+            padding: 25px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-bottom: 4px solid #eee;
+        }
+        .interest-card h3 { color: var(--primary-red); margin-bottom: 10px; }
+
+        /* --- FOOTER --- */
+        footer { background: #1a1a1a; color: var(--white); text-align: center; padding: 50px 20px; }
+        .btn {
+            display: inline-block;
+            background: var(--primary-red);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .btn:hover { background: var(--dark-red); transform: translateY(-3px); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Assets/Catlol.jpg" alt="Antony Hajsok" class="profile-img">
+        <h1>Antony Hajsok</h1>
+        <p class="tagline">Accounting Candidate | Rutgers Business School</p>
+    </header>
+
+    <div class="container">
+        
+        <section id="about">
+            <h2>Professional Profile</h2>
+            <div class="highlight-box">
+                <p><strong>Rutgers Business School - New Brunswick</strong> [cite: 6]</p>
+                <p>Bachelor of Science in Accounting (GPA: 3.7/4.0) | Expected May 2027 [cite: 7, 8]</p>
+                <p style="margin-top:10px;">I am currently completing 150 credit hours to qualify for CPA exam eligibility. My background combines rigorous academic training with a detail-oriented approach to problem-solving and quantitative reasoning[cite: 4, 26].</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical & Professional Skills</h2>
+            <div class="skills-container">
+                <span class="skill-badge">Microsoft Excel</span>
+                <span class="skill-badge">Quantitative Reasoning</span>
+                <span class="skill-badge">Intermediate French</span>
+                <span class="skill-badge">Time Management</span>
+                <span class="skill-badge">Attention to Detail</span>
+                <span class="skill-badge">Creative Writing</span>
+            </div>
+        </section>
+
+        <section id="work">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="job">
+                    <span class="job-date">Jun 2024 — Aug 2024</span>
+                    <span class="job-title">Kitchen Staff & Operations</span>
+                    <span class="job-company">Simply Gourmet LLC [cite: 11]</span>
+                    <p>Managed high-value inventory and kitchen operations, overseeing staff coordination and food safety compliance for hundreds of daily clients[cite: 13, 14].</p>
+                </div>
+
+                <div class="job">
+                    <span class="job-date">Jan 2022 — Aug 2022</span>
+                    <span class="job-title">Customer Service Associate</span>
+                    <span class="job-company">Weis Markets Inc. [cite: 15]</span>
+                    <p>Processed thousands of transactions with accuracy while balancing daily cash and card payments totaling up to $5,000[cite: 17].</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="interests">
+            <h2>Beyond the Ledger</h2>
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <h3>Arts & Music</h3>
+                    <p>Cellist in the Rutgers Sinfonia [cite: 20] and a creative writer with over 200,000 words drafted across a novel and screenplays[cite: 21].</p>
+                </div>
+                <div class="interest-card">
+                    <h3>Endurance</h3>
+                    <p>Completed the 2025 Jersey City Marathon, demonstrating the discipline and persistence I bring to my professional work[cite: 22].</p>
+                </div>
+                <div class="interest-card">
+                    <h3>Cultural Fluency</h3>
+                    <p>Spent six weeks in Switzerland (2025) for intensive language development to reach intermediate French proficiency[cite: 23, 27].</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="text-align: center;">
+            <h2>Let's Connect</h2>
+            <p>Seeking accounting internship opportunities for Summer 2026.</p><br>
+            <a href="mailto:ahajsok@icloud.com" class="btn">Email Antony</a> [cite: 3]
+        </section>
+
     </div>
-</section>
+
+    <footer>
+        <p>&copy; 2026 Antony Hajsok. Randolph, NJ[cite: 2].</p>
+    </footer>
+
+</body>
+</html>
