@@ -1,14 +1,3 @@
-This is a fantastic idea—it’s practical, highly relevant to an accounting professional in New Jersey, and a bit of a "conversation starter."
-
-To make this work, I’ve used the official 2026 New Jersey Gross Income Tax brackets for a single filer. I also set the logic to assume a standard retirement age of 67, so it calculates the tax on your "working years" remaining.
-
-The Plan
-I’ve swapped out the old savings calculator for the NJ Lifetime Income Tax Estimator. I’ve also ensured the styling matches your crimson-and-white Rutgers aesthetic.
-
-The Updated Code
-Copy and replace your entire index.html with this:
-
-HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,13 +59,14 @@ HTML
             letter-spacing: 2px;
         }
 
-        /* --- INTERACTIVE TAX APP --- */
+        /* --- INTERACTIVE TAX APP STYLES --- */
         .app-card {
             background: var(--white);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border: 1px solid #eee;
+            margin-top: 20px;
         }
         .input-row {
             display: grid;
@@ -221,35 +211,6 @@ HTML
             </div>
         </section>
 
-        <section id="tax-app">
-            <h2>Interactive Tool: NJ Lifetime Tax Estimator</h2>
-            <p style="margin-bottom: 20px;">Using the 2026 NJ Gross Income Tax brackets, this tool estimates your total state tax liability until retirement.</p>
-            
-            <div class="app-card">
-                <div class="input-row">
-                    <div class="input-group">
-                        <label>Current Age</label>
-                        <input type="number" id="age" placeholder="e.g. 20" value="20">
-                    </div>
-                    <div class="input-group">
-                        <label>Expected Yearly Salary ($)</label>
-                        <input type="number" id="salary" placeholder="e.g. 75000" value="75000">
-                    </div>
-                </div>
-                
-                <button class="calc-btn" onclick="calculateLifetimeTax()">Estimate Lifetime NJ Tax</button>
-
-                <div id="result" class="result-display">
-                    <p>Estimated Total NJ State Tax by Age 67:</p>
-                    <span id="lifetime-tax" class="tax-stat">$0.00</span>
-                    <p style="font-size: 0.9rem; color: var(--text-secondary);">
-                        Annual NJ Tax: <span id="annual-tax" style="font-weight: bold;">$0.00</span><br>
-                        <small>*Based on 2026 Single Filer brackets. Does not include Federal tax.</small>
-                    </p>
-                </div>
-            </div>
-        </section>
-
         <section id="skills">
             <h2>Technical & Professional Skills</h2>
             <div class="skills-container">
@@ -294,6 +255,35 @@ HTML
             </div>
         </section>
 
+        <section id="tax-app">
+            <h2>Interactive Tool: NJ Lifetime Tax Estimator</h2>
+            <p style="margin-bottom: 20px;">Using the 2026 NJ Gross Income Tax brackets, this tool estimates your total state tax liability until retirement.</p>
+            
+            <div class="app-card">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Current Age</label>
+                        <input type="number" id="age" placeholder="e.g. 20" value="20">
+                    </div>
+                    <div class="input-group">
+                        <label>Expected Yearly Salary ($)</label>
+                        <input type="number" id="salary" placeholder="e.g. 75000" value="75000">
+                    </div>
+                </div>
+                
+                <button class="calc-btn" onclick="calculateLifetimeTax()">Estimate Lifetime NJ Tax</button>
+
+                <div id="result" class="result-display">
+                    <p>Estimated Total NJ State Tax by Age 67:</p>
+                    <span id="lifetime-tax" class="tax-stat">$0.00</span>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">
+                        Annual NJ Tax: <span id="annual-tax" style="font-weight: bold;">$0.00</span><br>
+                        <small>*Based on 2026 Single Filer brackets. Does not include Federal tax.</small>
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <section style="text-align: center;">
             <h2>Let's Connect</h2>
             <p>Seeking accounting internship opportunities for Summer 2026.</p><br>
@@ -308,7 +298,6 @@ HTML
 
     <script>
         function calculateNJTax(income) {
-            // 2026 NJ Tax Brackets for Single Filers
             let tax = 0;
             if (income <= 20000) {
                 tax = income * 0.014;
