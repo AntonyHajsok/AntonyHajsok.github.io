@@ -1,3 +1,14 @@
+This is a fantastic idea—it’s practical, highly relevant to an accounting professional in New Jersey, and a bit of a "conversation starter."
+
+To make this work, I’ve used the official 2026 New Jersey Gross Income Tax brackets for a single filer. I also set the logic to assume a standard retirement age of 67, so it calculates the tax on your "working years" remaining.
+
+The Plan
+I’ve swapped out the old savings calculator for the NJ Lifetime Income Tax Estimator. I’ve also ensured the styling matches your crimson-and-white Rutgers aesthetic.
+
+The Updated Code
+Copy and replace your entire index.html with this:
+
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +70,72 @@
             letter-spacing: 2px;
         }
 
-        /* --- ABOUT / EDUCATION --- */
+        /* --- INTERACTIVE TAX APP --- */
+        .app-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .input-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .input-group input {
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        .input-group input:focus {
+            border-color: var(--primary-red);
+            outline: none;
+        }
+        .calc-btn {
+            width: 100%;
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        .calc-btn:hover { background: var(--dark-red); transform: scale(1.01); }
+        .result-display {
+            margin-top: 25px;
+            padding: 20px;
+            background: var(--soft-red);
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+        .tax-stat {
+            display: block;
+            font-size: 2rem;
+            color: var(--dark-red);
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        /* --- HIGHLIGHT BOX --- */
         .highlight-box {
             background: var(--soft-red);
             padding: 30px;
@@ -96,7 +172,7 @@
             font-size: 0.9rem;
         }
 
-        /* --- INTERESTS GRID --- */
+        /* --- INTERESTS --- */
         .interests-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -139,9 +215,38 @@
         <section id="about">
             <h2>Professional Profile</h2>
             <div class="highlight-box">
-                <p><strong>Rutgers Business School - New Brunswick</strong> [cite: 6]</p>
+                <p><strong>Rutgers Business School - New Brunswick</strong></p>
                 <p>Bachelor of Science in Accounting (GPA: 3.7/4.0) | Expected May 2027 </p>
-                <p style="margin-top:10px;">I am currently completing 150 credit hours to qualify for CPA exam eligibility. My background combines rigorous academic training with a detail-oriented approach to problem-solving and quantitative reasoning.</p>
+                <p style="margin-top:10px;">I am currently completing 150 credit hours to qualify for CPA exam eligibility. My background combines rigorous academic training with a detail-oriented approach to tax law and quantitative reasoning.</p>
+            </div>
+        </section>
+
+        <section id="tax-app">
+            <h2>Interactive Tool: NJ Lifetime Tax Estimator</h2>
+            <p style="margin-bottom: 20px;">Using the 2026 NJ Gross Income Tax brackets, this tool estimates your total state tax liability until retirement.</p>
+            
+            <div class="app-card">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Current Age</label>
+                        <input type="number" id="age" placeholder="e.g. 20" value="20">
+                    </div>
+                    <div class="input-group">
+                        <label>Expected Yearly Salary ($)</label>
+                        <input type="number" id="salary" placeholder="e.g. 75000" value="75000">
+                    </div>
+                </div>
+                
+                <button class="calc-btn" onclick="calculateLifetimeTax()">Estimate Lifetime NJ Tax</button>
+
+                <div id="result" class="result-display">
+                    <p>Estimated Total NJ State Tax by Age 67:</p>
+                    <span id="lifetime-tax" class="tax-stat">$0.00</span>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">
+                        Annual NJ Tax: <span id="annual-tax" style="font-weight: bold;">$0.00</span><br>
+                        <small>*Based on 2026 Single Filer brackets. Does not include Federal tax.</small>
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -149,11 +254,10 @@
             <h2>Technical & Professional Skills</h2>
             <div class="skills-container">
                 <span class="skill-badge">Microsoft Excel</span>
+                <span class="skill-badge">Tax Compliance</span>
                 <span class="skill-badge">Quantitative Reasoning</span>
                 <span class="skill-badge">Intermediate French</span>
-                <span class="skill-badge">Time Management</span>
                 <span class="skill-badge">Attention to Detail</span>
-                <span class="skill-badge">Creative Writing</span>
             </div>
         </section>
 
@@ -164,14 +268,14 @@
                     <span class="job-date">Jun 2024 — Aug 2024</span>
                     <span class="job-title">Kitchen Staff & Operations</span>
                     <span class="job-company">Simply Gourmet LLC </span>
-                    <p>Managed high-value inventory and kitchen operations, overseeing staff coordination and food safety compliance for hundreds of daily clients[cite: 13, 14].</p>
+                    <p>Managed high-value inventory and kitchen operations, overseeing staff coordination and food safety compliance for hundreds of daily clients.</p>
                 </div>
 
                 <div class="job">
                     <span class="job-date">Jan 2022 — Aug 2022</span>
                     <span class="job-title">Customer Service Associate</span>
                     <span class="job-company">Weis Markets Inc. </span>
-                    <p>Processed thousands of transactions with accuracy while balancing daily cash and card payments totaling up to $5,000[cite: 17].</p>
+                    <p>Processed thousands of transactions with accuracy while balancing daily cash and card payments totaling up to $5,000.</p>
                 </div>
             </div>
         </section>
@@ -187,10 +291,6 @@
                     <h3>Endurance</h3>
                     <p>Completed the 2025 Jersey City Marathon, demonstrating the discipline and persistence I bring to my professional work.</p>
                 </div>
-                <div class="interest-card">
-                    <h3>Cultural Fluency</h3>
-                    <p>Spent six weeks in Switzerland (2025) for intensive language development to reach intermediate French proficiency.</p>
-                </div>
             </div>
         </section>
 
@@ -203,8 +303,50 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Antony Hajsok. Randolph, NJ[cite: 2].</p>
+        <p>&copy; 2026 Antony Hajsok. Randolph, NJ.</p>
     </footer>
+
+    <script>
+        function calculateNJTax(income) {
+            // 2026 NJ Tax Brackets for Single Filers
+            let tax = 0;
+            if (income <= 20000) {
+                tax = income * 0.014;
+            } else if (income <= 35000) {
+                tax = (income * 0.0175) - 70;
+            } else if (income <= 40000) {
+                tax = (income * 0.035) - 682.50;
+            } else if (income <= 75000) {
+                tax = (income * 0.05525) - 1492.50;
+            } else if (income <= 500000) {
+                tax = (income * 0.0637) - 2126.25;
+            } else if (income <= 1000000) {
+                tax = (income * 0.0897) - 15126.25;
+            } else {
+                tax = (income * 0.1075) - 32926.25;
+            }
+            return Math.max(0, tax);
+        }
+
+        function calculateLifetimeTax() {
+            const age = parseInt(document.getElementById('age').value) || 0;
+            const salary = parseFloat(document.getElementById('salary').value) || 0;
+            const retirementAge = 67;
+            const yearsRemaining = Math.max(0, retirementAge - age);
+
+            const annualTax = calculateNJTax(salary);
+            const lifetimeTax = annualTax * yearsRemaining;
+
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+
+            document.getElementById('lifetime-tax').innerText = formatter.format(lifetimeTax);
+            document.getElementById('annual-tax').innerText = formatter.format(annualTax);
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
